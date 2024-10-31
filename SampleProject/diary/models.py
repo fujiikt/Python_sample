@@ -14,6 +14,9 @@ class Page(models.Model):
 	page_date = models.DateField(
 		verbose_name="日付"
 	)
+	picture = models.ImageField(
+		upload_to="diary/picture/", blank=True, null=True, verbose_name="写真"
+	)
 	created_at = models.DateTimeField(
 		auto_now_add=True, verbose_name="作成日時"
 	)
