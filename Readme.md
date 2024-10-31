@@ -15,6 +15,11 @@ source venv/bin/activate
 pip install django
 ```
 
+### pollow install
+```
+pip install pillow
+```
+
 ### プロジェクトの作成
 ```
 django-admin startproject [projectName]

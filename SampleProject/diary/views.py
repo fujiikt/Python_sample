@@ -20,7 +20,7 @@ class PageCreationView(View):
             request, "diary/page_form.html", {"form": form})
     
     def post(self, request):
-        form = PageForm(request.POST)
+        form = PageForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
             return redirect("diary:index")
