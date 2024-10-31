@@ -15,7 +15,7 @@ source venv/bin/activate
 pip install django
 ```
 
-### pollow install
+### pillow install
 ```
 pip install pillow
 ```
