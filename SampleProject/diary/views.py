@@ -36,8 +36,24 @@ class PageDetailView(View):
         page = get_object_or_404(Page, id=id)
         return render(request, "diary/page_detail.html", {"page": page})
 
+class PageUpdateView(View):
+    def get(self, request, id):    
+        page = get_object_or_404(Page, id=id)
+        form = PageForm(instance=page)
+        return render(request, "diary/page_update.html", {"form": form})
+    
+    def post(self, request, id):
+        page = get_object_or_404(Page, id=id)
+        form = PageForm(request.POST, request.FILES, instance=page)
+        if form.is_valid():
+            # 画像ファイルがある日記の場合は元画像を削除する処理があった方が良い
+            form.save()
+            return redirect("diary:page_detail", id=id)
+        return render(request, "diary/page_update.html", {"form": form})
+
 
 index = IndexView.as_view()
 page_create = PageCreationView.as_view()
 page_list = PageListView.as_view()
 page_detail = PageDetailView.as_view()
+page_update = PageUpdateView.as_view()
